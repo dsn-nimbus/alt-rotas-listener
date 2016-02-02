@@ -1,7 +1,7 @@
 {
   "name": "alt-rotas-listener",
   "main": "dist/alt-rotas-listener.min.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/dsn-nimbus/alt-rotas-listener.git",
   "authors": ["dsn-nimbus <ericdantas0@gmail.com>"],
   "description": "desc",
