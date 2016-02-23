@@ -1,11 +1,14 @@
 {
   "name": "alt-rotas-listener",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/alt-rotas-listener.min.js",
   "scripts": {
     "test": "gulp coverage"
   },
   "dependencies": {},
+  "babel": {
+    "presets": ["es2015"]
+  },
   "devDependencies": {
     "babel": "^5.8.23",
     "gulp": "^3.9.0",

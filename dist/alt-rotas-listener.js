@@ -1,17 +1,7 @@
-;(function() {
-  'use strict';
+  /*
+  Rotas exemplo
 
-  angular
-    .module('alt.rotas-listener', [])
-    .provider('AltRotas', [function() {
-      var self = this;
-
-      self.rotas = [];
-
-      /*
-        Rotas exemplo
-
-        [
+  [
 			{
 				icone: '1.jpg', nome: 'A Receber', url: '/lancamentos/receber', active: false
 			},
@@ -26,7 +16,7 @@
 			},
 			{
 				icone: '5.jpg', nome: 'Cadastros', url: undefined, active: false,
-				subRotas: 
+				subRotas:
 				[
 					{
 						icone: '6.jpg', nome: 'Contas', url: '/contas', active: false
@@ -44,10 +34,20 @@
 			}
 		]
 
-        A comparação será feita pelo $location.path === rota[indice].url,
-        caso estas informações batam, aquela rota específica terá o active como true,
-        e todas as outras terão o active como false.
-      */
+    A comparação será feita pelo $location.path === rota[indice].url,
+    caso estas informações batam, aquela rota específica terá o active como true,
+    e todas as outras terão o active como false.
+  */
+
+;(function() {
+  'use strict';
+
+  angular
+    .module('alt.rotas-listener', [])
+    .provider('AltRotas', [function() {
+      var self = this;
+
+      self.rotas = [];
 
       self.$get = [function() {
         return self.rotas;
@@ -62,11 +62,11 @@
         var _path = $location.path();
 
         angular.forEach(self.rotas, function(rota) {
-          rota.active = !!(~_path.indexOf(rota.url));
-            if (!!rota.subRotas)
-            {
-                angular.forEach(rota.subRotas, function(rota) {
-                    rota.active = !!(~_path.indexOf(rota.url));
+          rota.active = !rota.naoAtivavel && !!(~_path.indexOf(rota.url));
+
+            if (!!rota.subRotas) {
+                angular.forEach(rota.subRotas, function(subRota) {
+                    subRota.active = !subRota.naoAtivavel && !!(~_path.indexOf(subRota.url));
                 });
             }
         });
